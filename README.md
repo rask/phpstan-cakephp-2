@@ -2,7 +2,9 @@
 
 PHPStan extensions to help test CakePHP 2 projects with PHPStan
 
-<br>
+Forked from Tomas Votruba's original fork of this package (which was also a fork
+to begin with). This version does some updates to make it operable with PHPStan
+2.0+.
 
 ## Installation
 
@@ -20,7 +22,7 @@ parameters:
         - vendor/my-vendor/my-plugin/src/Model/Behavior/*.php
 ```
 
-See `extension.neon` for the default list of behavior locations.
+See `extension.neon` for the default list of behavior locations.[composer.json](composer.json)
 
 <br>
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PHPStanCakePHP2\ReturnTypeExtension;
 
+use PhpParser\Node\Expr\ConstFetch;
 use PhpParser\Node\Expr\StaticCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
@@ -45,13 +46,15 @@ final class ClassRegistryInitExtension implements DynamicStaticMethodReturnTypeE
         return $methodReflection->getName() === 'init';
     }
 
-    public function getTypeFromStaticMethodCall(MethodReflection $methodReflection, StaticCall $methodCall, Scope $scope): ?Type
+    public function getTypeFromStaticMethodCall(MethodReflection $methodReflection, StaticCall $methodCall, Scope $scope): Type
     {
         $argumentType = $scope->getType($methodCall->getArgs()[0]->value);
 
-        if (! $argumentType instanceof ConstantStringType) {
+        if (count($argumentType->getConstantStrings()) === 0) {
             return $this->getDefaultType();
         }
+
+        assert($argumentType instanceof ConstantStringType); // @phpstan-ignore-line
 
         $value = $argumentType->getValue();
 

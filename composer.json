@@ -1,14 +1,20 @@
 {
-    "name": "tomasvotruba/phpstan-cakephp-2",
+    "name": "rask/phpstan-cakephp-2",
     "description": "PHPStan extension for CakePHP 2",
     "type": "library",
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/phpstan/phpstan-src.git"
+        }
+    ],
     "require": {
         "php": "^8.0",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^2.0"
     },
     "require-dev": {
-        "phpstan/phpstan-phpunit": "^1.3",
+        "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^10.5",
         "phpstan/extension-installer": "^1.3",
         "tracy/tracy": "^2.10",
@@ -36,6 +42,7 @@
         }
     },
     "scripts": {
+        "test": "vendor/bin/phpunit",
         "fix-cs": "vendor/bin/ecs check src tests --fix",
         "check-cs": "vendor/bin/ecs check src tests",
         "phpstan": "vendor/bin/phpstan"

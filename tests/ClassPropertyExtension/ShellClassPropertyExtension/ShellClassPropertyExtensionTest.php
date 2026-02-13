@@ -37,6 +37,7 @@ final class ShellClassPropertyExtensionTest extends TypeInferenceTestCase
     public function testExtensionIsLoaded(): void
     {
         // make sure the extension is loaded
+        /** @var array<int, object> $loadedExtensions */
         $loadedExtensions = $this->getContainer()->getServicesByTag('phpstan.broker.propertiesClassReflectionExtension');
 
         $extensionClasses = [];
